@@ -20,6 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+
 #pragma region Segment Tree
 
 #ifndef _SEGMENT_TREE_VARIANT
@@ -173,11 +174,11 @@ namespace segment_tree_variant
         using TrnTp = Tp;
         using RetTp = Tp;
 
-        static DatTp update(RetTp val)
+        static const DatTp update(const RetTp& val)
         {
             return {val};
         }
-        static DatTp update(DatTp lval, DatTp rval)
+        static const DatTp update(const DatTp& lval, const DatTp& rval)
         {
             const int n = lval.size();
             const int m = rval.size();
@@ -201,26 +202,26 @@ namespace segment_tree_variant
             return result;
         }
 
-        static TrnTp get_transition(DatTp val, Tp l, Tp r)
+        static const TrnTp get_transition(const DatTp& val, Tp l, Tp r)
         {
             return l <= val[0] && val[0] <= r;
         }
-        static TrnTp get_transition(TrnTp lval, DatTp rval, Tp l, Tp r)
+        static const TrnTp get_transition(const TrnTp& lval, const DatTp& rval, Tp l, Tp r)
         {
             if (l > r)
                 return lval;
             return lval + upper_bound(rval.begin(), rval.end(), r) - lower_bound(rval.begin(), rval.end(), l);
         }
-        static TrnTp get_transition(DatTp lval, TrnTp rval, Tp l, Tp r)
+        static const TrnTp get_transition(const DatTp& lval, const TrnTp& rval, Tp l, Tp r)
         {
             return get_transition(rval, lval, l, r);
         }
-        static TrnTp get_transition(RetTp lval, RetTp rval, ...)
+        static const TrnTp get_transition(const RetTp& lval, const RetTp& rval, ...)
         {
             return lval + rval;
         }
 
-        static RetTp get(TrnTp val)
+        static const RetTp get(TrnTp val)
         {
             return val;
         }
@@ -288,11 +289,6 @@ public:
     const RetTp get(int li, int ri, Args... args) const
     {
         return Var::get(get_transition(li, ri, args...));
-    }
-
-    const DatTp operator[] (const int &i) const
-    {
-        return data.back()[i];
     }
 
 public:
