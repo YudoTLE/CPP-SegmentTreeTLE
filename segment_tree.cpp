@@ -35,17 +35,17 @@ namespace segment_tree_variant
         using TrnTp = Tp;
         using RetTp = Tp;
 
-        static DatTp update(RetTp lval, RetTp rval=0)
+        static const DatTp update(const RetTp& lval, const RetTp& rval=0)
         {
             return lval + rval;
         }
 
-        static TrnTp get_transition(TrnTp lval, TrnTp rval=0)
+        static const TrnTp get_transition(const TrnTp& lval, const TrnTp& rval=0)
         {
             return lval + rval;
         }
 
-        static RetTp get(TrnTp val)
+        static const RetTp get(const TrnTp& val)
         {
             return val;
         }
@@ -58,17 +58,17 @@ namespace segment_tree_variant
         using TrnTp = Tp;
         using RetTp = Tp;
 
-        static DatTp update(RetTp lval, RetTp rval)
+        static const DatTp update(const RetTp& lval, const RetTp& rval)
         {
             return lval ^ rval;
         }
 
-        static TrnTp get_transition(TrnTp val)
+        static const TrnTp get_transition(const TrnTp& val)
         {
             return val;
         }
 
-        static RetTp get(TrnTp val)
+        static const RetTp get(const TrnTp& val)
         {
             return val;
         }
@@ -81,17 +81,17 @@ namespace segment_tree_variant
         using TrnTp = Tp;
         using RetTp = Tp;
 
-        static DatTp update(RetTp lval, RetTp rval)
+        static const DatTp update(const RetTp& lval, const RetTp& rval)
         {
             return lval & rval;
         }
 
-        static TrnTp get_transition(TrnTp val)
+        static const TrnTp get_transition(const TrnTp& val)
         {
             return val;
         }
 
-        static RetTp get(TrnTp val)
+        static const RetTp get(const TrnTp& val)
         {
             return val;
         }
@@ -104,17 +104,17 @@ namespace segment_tree_variant
         using TrnTp = Tp;
         using RetTp = Tp;
 
-        static DatTp update(RetTp lval, RetTp rval)
+        static const DatTp update(const RetTp& lval, const RetTp& rval)
         {
             return lval | rval;
         }
 
-        static TrnTp get_transition(TrnTp val)
+        static const TrnTp get_transition(const TrnTp& val)
         {
             return val;
         }
 
-        static RetTp get(TrnTp val)
+        static const RetTp get(const TrnTp& val)
         {
             return val;
         }
@@ -127,11 +127,11 @@ namespace segment_tree_variant
         using TrnTp = vector<Tp>;
         using RetTp = Tp; 
 
-        static DatTp update(RetTp val)
+        static const DatTp update(const RetTp& val)
         {
             return DatTp(4, val);
         }
-        static DatTp update(DatTp lval, DatTp rval)
+        static const DatTp update(const DatTp& lval, const DatTp& rval)
         {
             return DatTp
             {
@@ -152,16 +152,16 @@ namespace segment_tree_variant
             };
         }
 
-        static TrnTp get_transition(TrnTp val)
+        static const TrnTp get_transition(const TrnTp& val)
         {
             return val;
         }
-        static TrnTp get_transition(TrnTp lval, TrnTp rval)
+        static const TrnTp get_transition(const TrnTp& lval, const TrnTp& rval)
         {
             return update(lval, rval);
         }
 
-        static RetTp get(TrnTp val)
+        static const RetTp get(const TrnTp& val)
         {
             return *max_element(val.begin(), val.end());
         }
@@ -221,7 +221,7 @@ namespace segment_tree_variant
             return lval + rval;
         }
 
-        static const RetTp get(TrnTp val)
+        static const RetTp get(const TrnTp& val)
         {
             return val;
         }
